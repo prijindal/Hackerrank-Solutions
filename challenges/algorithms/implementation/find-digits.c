@@ -1,0 +1,29 @@
+#include<stdio.h>
+int main()
+{
+	int n[100],t,i,x,k,a;
+	scanf("%d",&t);
+	for(i=0;i<t;++i)
+	{
+		scanf("%d",&n[i]);
+	}
+	for(i=0;i<t;++i)
+	{
+		x=n[i];
+		k=0;
+		while(x!=0)
+		{
+			a=x%10;
+			//printf("\t%d\n",a);
+			if(a!=0)
+			{
+				if((n[i]%a)==0)
+				{
+					k++;
+				}
+			}
+			x=x/10;
+		}
+		printf("%d\n",k);
+	}
+}
