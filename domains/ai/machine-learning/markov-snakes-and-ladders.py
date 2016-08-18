@@ -51,10 +51,14 @@ from random import random
 def game(snakes, ladders, p):
     B = Board(snakes, ladders, p)
     k = 0
-    while B.win == False:
+    completed = False
+    while k < 1000:
         B.move()
         k+=1
-    return k
+        if B.win == True:
+            completed = True
+            return k
+    return False
 
 def simulate():
     P = [float(x) for x in input().split(',')]
@@ -77,9 +81,14 @@ def simulate():
         S.append(s)
 
     sum = 0
-    for i in range(5000):
-        sum += game(L, S, P)
-    print(int(sum/5000))
+    N = 5000
+    j = 0
+    for i in range(N):
+        gCount = game(L, S, P)
+        if gCount:
+            j+=1
+            sum += gCount
+    print(int(sum/j))
     # break;
 
 t = int(input())
